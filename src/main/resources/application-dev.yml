@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5430/OnLineFoodOrder_Db
+    url: jdbc:postgresql://localhost:5430/serviceDeStage_Db
     username: postgres
     password: 123456789
     driver-class-name: org.postgresql.Driver

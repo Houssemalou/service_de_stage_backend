@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres-sql
+    container_name: postgres-sql-stage
     image: postgres
     environment:
       POSTGRES_PASSWORD: 123456789
@@ -11,25 +11,13 @@ services:
     ports:
       - "5430:5432"
     networks:
-      - spring-demo
+      - spring-project
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin4_container
-    restart: always
-    ports:
-      - "8888:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
-      PGADMIN_DEFAULT_PASSWORD: strong-password
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    networks:
-      - spring-demo
+
 networks:
-  spring-demo:
+  spring-project:
     driver: bridge
 
 volumes:
   postgres:
-  pgadmin-data:
+
