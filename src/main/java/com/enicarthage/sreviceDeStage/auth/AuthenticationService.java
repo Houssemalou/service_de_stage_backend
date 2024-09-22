@@ -1,8 +1,8 @@
 package com.enicarthage.sreviceDeStage.auth;
 
-import com.apps4you.FoodOrderOnLine.security.JwtService;
-import com.apps4you.FoodOrderOnLine.user.User;
-import com.apps4you.FoodOrderOnLine.user.UserRepository;
+import com.enicarthage.sreviceDeStage.security.JwtService;
+import com.enicarthage.sreviceDeStage.user.User;
+import com.enicarthage.sreviceDeStage.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +25,6 @@ public class AuthenticationService {
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .phoneNumber(request.getPhoneNumber())
                 .role(request.getRole())
                 .build();
         userRepository.save(user);
@@ -44,7 +43,6 @@ public class AuthenticationService {
         claims.put("firstName", user.getFirstname());
         claims.put("lastName", user.getLastname());
         claims.put("email", user.getEmail());
-        claims.put("phoneNumber", user.getPhoneNumber());
 
         var jwtToken = jwtService.generateToken(claims, user);
         return AuthenticationResponse.builder()
